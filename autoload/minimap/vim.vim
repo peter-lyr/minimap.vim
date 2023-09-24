@@ -800,8 +800,11 @@ function! s:clear_highlights() abort
 endfunction
 
 function! s:minimap_move() abort
-    if s:win_info == {}
+    if s:win_info == {} || has_key(s:win_info, 'mm_height') == 0
         call s:get_window_info()
+    end
+    if s:win_info == {} || has_key(s:win_info, 'mm_height') == 0
+      return
     end
     let curr = line('.')
 
